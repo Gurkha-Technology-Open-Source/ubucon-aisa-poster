@@ -31,33 +31,31 @@ app.post('/api/generate-poster', upload.single('image'), async (req, res) => {
           input: await sharp(imageBuffer).resize(400, 400).toBuffer(), // Resize user image
           gravity: 'northwest',
           left: 120, // Adjusted for 1080px canvas
-          top: 450, // Adjusted for 1080px canvas
+          top: 500, // Adjusted for 1080px canvas
         },
-        // Composite the user's name text
+        // Composite the user's name text vertically
         {
           input: {
             text: {
-              text: `<span foreground="white">${name}</span>`, // Text content with white foreground
-              font: 'Ubuntu', // Specify font family
-              rgba: true, // Enable RGBA output for transparency
-              dpi: 72, // Dots per inch for text rendering
-            },
-          },
-          top: 300, // Adjusted for 1080px canvas
-          left: 120, // Adjusted for 1080px canvas
-        },
-        // Composite the user's organization/title text
-        {
-          input: {
-            text: {
-              text: `<span foreground="white">${organization}</span>`,
-              font: 'Ubuntu',
+              text: `<span foreground="white" gravity="south">${name}</span>`,
+              font: 'Ubuntu 36',
               rgba: true,
-              dpi: 72,
             },
           },
-          top: 350, // Position below the name, adjust as needed
-          left: 120, // Adjusted for 1080px canvas
+          top: 150,
+          left: 120,
+        },
+        // Composite the user's organization/title text vertically
+        {
+          input: {
+            text: {
+              text: `<span foreground="white" gravity="south">${organization}</span>`,
+              font: 'Ubuntu 28',
+              rgba: true,
+            },
+          },
+          top: 150,
+          left: 170,
         },
       ])
       .toBuffer(); // Output the final composite image as a Buffer

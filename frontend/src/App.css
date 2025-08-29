@@ -54,24 +54,24 @@ body {
 
 .profile-image {
   position: absolute;
-  bottom: 25%;
-  left: 8%;
-  width: 28.28%;
-  height: 28.28%;
+  top: 46%; /* Corresponds to 500px on 1080px canvas */
+  left: 11%; /* Corresponds to 120px on 1080px canvas */
+  width: 37%; /* Corresponds to 400px on 1080px canvas */
+  height: 37%;
   object-fit: cover;
 }
 
 .text-overlay {
   position: absolute;
-  top: 30%;
-  left: 8%;
+  top: 14%; /* Corresponds to 150px on 1080px canvas */
+  left: 11%; /* Corresponds to 120px on 1080px canvas */
   color: white;
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.7vw;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   white-space: nowrap;
-  text-align: center;
+  text-align: left;
 }
 
 .name {
