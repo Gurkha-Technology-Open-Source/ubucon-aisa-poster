@@ -4,6 +4,7 @@ import './App.css';
 import PosterCanvas from './components/PosterCanvas';
 import TextInput from './components/TextInput';
 import ImageUpload from './components/ImageUpload';
+import githubLogo from './assets/github-logo.png';
 
 function App() {
   const [name, setName] = useState('');
@@ -61,6 +62,12 @@ function App() {
           </button>
         </div>
       </main>
+      <footer className="App-footer">
+        <a href="https://github.com/Gurkha-Technology-Open-Source/ubucon-aisa-poster" target="_blank" rel="noopener noreferrer">
+          <img src={githubLogo} alt="GitHub" />
+          An open-source project by Gurkha Technology
+        </a>
+      </footer>
     </div>
   );
 }

@@ -193,3 +193,24 @@ body {
     width: 100%;
   }
 }
+
+.App-footer {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e5e5e5;
+}
+
+.App-footer a {
+  color: #333;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.App-footer img {
+  width: 20px;
+  height: 20px;
+}

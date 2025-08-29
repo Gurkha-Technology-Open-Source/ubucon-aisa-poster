@@ -10,7 +10,8 @@ This project is a web application that allows participants of UbuCon Asia 2025 t
 
 ## Tech Stack
 
-- **Frontend:** React, Axios, html2canvas
+- **Frontend:** React, html2canvas
+- **Backend:** Vercel Serverless Function (for background removal)
 
 ## Getting Started
 
