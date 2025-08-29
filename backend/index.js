@@ -28,10 +28,10 @@ app.post('/api/generate-poster', upload.single('image'), async (req, res) => {
       .composite([
         // Composite the user's image onto the poster
         {
-          input: await sharp(imageBuffer).resize(250, 250).toBuffer(), // Resize user image
+          input: await sharp(imageBuffer).resize(400, 400).toBuffer(), // Resize user image
           gravity: 'northwest',
-          left: 100, // Adjusted for 1080px canvas
-          top: 300, // Adjusted for 1080px canvas
+          left: 120, // Adjusted for 1080px canvas
+          top: 450, // Adjusted for 1080px canvas
         },
         // Composite the user's name text
         {
@@ -43,8 +43,8 @@ app.post('/api/generate-poster', upload.single('image'), async (req, res) => {
               dpi: 72, // Dots per inch for text rendering
             },
           },
-          top: 600, // Adjusted for 1080px canvas
-          left: 100, // Adjusted for 1080px canvas
+          top: 300, // Adjusted for 1080px canvas
+          left: 120, // Adjusted for 1080px canvas
         },
         // Composite the user's organization/title text
         {
@@ -56,8 +56,8 @@ app.post('/api/generate-poster', upload.single('image'), async (req, res) => {
               dpi: 72,
             },
           },
-          top: 650, // Position below the name, adjust as needed
-          left: 100, // Adjusted for 1080px canvas
+          top: 350, // Position below the name, adjust as needed
+          left: 120, // Adjusted for 1080px canvas
         },
       ])
       .toBuffer(); // Output the final composite image as a Buffer

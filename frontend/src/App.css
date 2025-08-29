@@ -54,17 +54,17 @@ body {
 
 .profile-image {
   position: absolute;
-  bottom: 21.7%; /* 307px / 1414px */
-  left: 6.65%; /* 94px / 1414px */
-  width: 14.14%; /* 200px / 1414px */
-  height: 14.14%; /* 200px / 1414px */
+  bottom: 25%;
+  left: 8%;
+  width: 28.28%;
+  height: 28.28%;
   object-fit: cover;
 }
 
 .text-overlay {
   position: absolute;
-  top: 38.19%;
-  left: 6.65%;
+  top: 30%;
+  left: 8%;
   color: white;
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.7vw;
