@@ -55,7 +55,7 @@ body {
 .profile-image {
   position: absolute;
   bottom: 21.7%; /* 307px / 1414px */
-  left: 6.65%; /* 94px / 1414px */
+  left: 10.65%; /* 94px / 1414px */
   width: 14.14%; /* 200px / 1414px */
   height: 14.14%; /* 200px / 1414px */
   object-fit: cover;
@@ -68,6 +68,8 @@ body {
   color: white;
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.7vw; /* Responsive font size */
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
 }
 
 .name {
