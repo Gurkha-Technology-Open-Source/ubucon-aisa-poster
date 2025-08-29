@@ -19,18 +19,26 @@ function App() {
     }
 
     setIsLoading(true);
+    const posterElement = posterRef.current;
+    posterElement.classList.add('print-view');
 
-    html2canvas(posterRef.current, { useCORS: true }).then(canvas => {
+    html2canvas(posterElement, {
+      useCORS: true,
+      onclone: (document) => {
+        // Ensure styles are applied before rendering
+      }
+    }).then(canvas => {
       const link = document.createElement('a');
       link.href = canvas.toDataURL('image/png');
       link.download = 'ubucon-poster.png';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      setIsLoading(false);
     }).catch(error => {
       console.error('Error generating poster:', error);
       alert('There was an error generating your poster. Please try again.');
+    }).finally(() => {
+      posterElement.classList.remove('print-view');
       setIsLoading(false);
     });
   };
