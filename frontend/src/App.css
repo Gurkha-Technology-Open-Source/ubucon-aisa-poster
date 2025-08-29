@@ -1,6 +1,11 @@
 body {
   font-family: sans-serif;
   margin: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 .App-header {
@@ -34,6 +39,10 @@ body {
   background-color: #f0f0f0; /* Fallback background */
 }
 
+/* Ensure all elements use border-box for sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 .poster-template-img {
   position: absolute;
   top: 0;
@@ -45,11 +54,24 @@ body {
 }
 
 .overlay-elements {
+.App {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  width: 100%;
+  max-width: 100vw;
+  max-height: calc(100vh - 4rem); /* Account for header height */
+  overflow: auto;
 }
 
 .profile-image {
@@ -59,6 +81,9 @@ body {
   width: 37%; /* Corresponds to 400px on 1080px canvas */
   height: 37%;
   object-fit: cover;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
 }
 
 .text-overlay {
@@ -67,6 +92,9 @@ body {
   left: 11%; /* Corresponds to 120px on 1080px canvas */
   color: white;
   font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
   font-size: 1.7vw;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -76,6 +104,8 @@ body {
 
 .name {
   font-weight: 700;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .organization {
@@ -86,18 +116,22 @@ body {
   margin-top: 1rem;
 }
 
+  max-width: 100%;
+  max-height: 100%;
 @media (max-width: 768px) {
   .text-overlay {
     font-size: 18px; /* Fixed font size for mobile */
   }
 
   .organization {
+    max-height: none;
     font-size: 14px; /* Fixed font size for mobile */
   }
 }
 
 
 .controls-container {
+    max-height: none;
   flex: 1;
   max-width: 40%;
   display: flex;
