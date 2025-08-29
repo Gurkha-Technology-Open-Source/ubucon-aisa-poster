@@ -4,22 +4,19 @@ This project is a web application that allows participants of UbuCon Asia 2025 t
 
 ## Features
 
-- Upload a profile photo with automatic background removal.
+- Upload a profile photo.
 - Add your name and organization/title.
 - Download the final poster in PNG format.
 
 ## Tech Stack
 
-- **Frontend:** React
-- **Backend:** Node.js, Express
-- **Image Processing:** Sharp
+- **Frontend:** React, Axios, html2canvas
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js and npm installed.
-- A remove.bg API key.
 
 ### Installation
 
@@ -35,31 +32,11 @@ This project is a web application that allows participants of UbuCon Asia 2025 t
    npm install
    ```
 
-3. **Install backend dependencies:**
-   ```bash
-   cd ../backend
-   npm install
-   ```
-
-### Configuration
-
-1. Create a `.env` file in the `backend` directory.
-2. Add your remove.bg API key to the `.env` file:
-   ```
-   REMOVE_BG_API_KEY=YOUR_API_KEY_HERE
-   ```
-
 ### Running the Application
 
-1. **Start the backend server:**
+1. **Start the frontend development server:**
    ```bash
-   cd backend
-   npm start
-   ```
-
-2. **Start the frontend development server:**
-   ```bash
-   cd ../frontend
+   cd frontend
    npm start
    ```
 
