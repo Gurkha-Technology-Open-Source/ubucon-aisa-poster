@@ -7,17 +7,19 @@ const PosterCanvas = ({ name, organization, image, generatedPoster }) => {
       {generatedPoster ? (
         <img src={generatedPoster} alt="Generated Poster" className="poster-template" />
       ) : (
-        <>
-          <img src={posterTemplate} alt="UbuCon Asia 2025 Poster Template" className="poster-template" />
-          {image && <img src={image} alt="Profile" className="profile-image" />}
-          <div className="text-overlay">
-            <div className="name">{name}</div>
-            <div className="organization">{organization}</div>
+        <div className="poster-content">
+          <img src={posterTemplate} alt="UbuCon Asia 2025 Poster Template" className="poster-template-img" />
+          <div className="overlay-elements">
+            {image && <img src={image} alt="Profile" className="profile-image" />}
+            <div className="text-overlay">
+              <div className="name">{name}</div>
+              <div className="organization">{organization}</div>
+            </div>
           </div>
-        </>
+        </div>
       )}
       {generatedPoster && (
-        <a href={generatedPoster} download="ubucon-poster.png" className="button">
+        <a href={generatedPoster} download="ubucon-poster.png" className="button download-button">
           Download Poster
         </a>
       )}
