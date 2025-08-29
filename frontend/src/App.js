@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import domtoimage from 'dom-to-image';
+import confetti from 'canvas-confetti';
 import './App.css';
 import PosterCanvas from './components/PosterCanvas';
 import TextInput from './components/TextInput';
@@ -13,6 +14,7 @@ function App() {
   const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [appIsLoading, setAppIsLoading] = useState(true); // New state for preloader
+  const [showConfettiMessage, setShowConfettiMessage] = useState(false); // New state for confetti message
   const posterRef = useRef();
 
   useEffect(() => {
@@ -60,6 +62,8 @@ function App() {
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
+          setShowConfettiMessage(true); // Show confetti and message
+          confetti(); // Trigger confetti effect
       })
       .catch(function (error) {
           console.error('oops, something went wrong!', error);
@@ -78,10 +82,10 @@ function App() {
   return (
     <div className="App">
       {appIsLoading && <div className="loading-overlay">Loading Application...</div>}
-      <header className="App-header" style={{ display: appIsLoading ? 'none' : 'block' }}>
+      <header className="App-header" style={{ display: appIsLoading || showConfettiMessage ? 'none' : 'block' }}>
         <h1>UbuCon Asia 2025 Poster Generator</h1>
       </header>
-      <main className="main-content" style={{ display: appIsLoading ? 'none' : 'flex' }}>
+      <main className="main-content" style={{ display: appIsLoading || showConfettiMessage ? 'none' : 'flex' }}>
         <PosterCanvas ref={posterRef} name={name} organization={organization} image={imagePreview} />
         <div className="controls-container">
           <TextInput setName={setName} setOrganization={setOrganization} />
@@ -91,13 +95,27 @@ function App() {
           </button>
         </div>
       </main>
-      <footer className="App-footer" style={{ display: appIsLoading ? 'none' : 'block' }}>
+      <footer className="App-footer" style={{ display: appIsLoading || showConfettiMessage ? 'none' : 'block' }}>
         <a href="https://github.com/Gurkha-Technology-Open-Source/ubucon-aisa-poster" target="_blank" rel="noopener noreferrer">
           <img src={githubLogo} alt="GitHub" />
           An open-source project by Gurkha Technology
         </a>
       </footer>
       {isLoading && <div className="loading-overlay">Generating Poster...</div>}
+
+      {showConfettiMessage && (
+        <div className="confetti-message-overlay">
+          <div className="confetti-message-content">
+            <h2>See you at the event!</h2>
+            <p>Do submit a PR on GitHub to this project if you have some ideas or want to work on it more.</p>
+            <a href="https://github.com/Gurkha-Technology-Open-Source/ubucon-aisa-poster" target="_blank" rel="noopener noreferrer" className="github-link">
+              <img src={githubLogo} alt="GitHub" />
+              Visit GitHub Project
+            </a>
+            <button className="button" onClick={() => setShowConfettiMessage(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
