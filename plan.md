@@ -19,41 +19,40 @@ This project will be deployed on Vercel's free "Hobby" tier. The following const
 - [x] **Initialize Project:** Set up a new React project using Create React App or Vite.
 - [x] **Folder Structure:** Organize folders for components, services, and assets.
 - [x] **UI Mockup:** Create the basic UI layout with placeholders for the poster, image upload, and text input fields.
-- [ ] **Component Creation:**
-    - [ ] `ImageUpload.js`: Component for handling file selection and preview.
-    - [ ] `TextInput.js`: Component for name and organization input.
-    - [ ] `PosterCanvas.js`: Component to display the poster template and render the user's photo and text.
+- [x] **Component Creation:**
+    - [x] `ImageUpload.js`: Component for handling file selection and preview.
+    - [x] `TextInput.js`: Component for name and organization input.
+    - [x] `PosterCanvas.js`: Component to display the poster template and render the user's photo and text.
 
 ### Phase 2: Backend Development
 
-- [ ] **Setup Backend Server:** Initialize a Node.js project with Express.
-- [ ] **Image Processing Service:**
-    - [ ] Choose and integrate an image processing library (e.g., Sharp).
-    - [ ] Implement logic to composite the user's photo onto the poster template.
-- [ ] **Background Removal API:**
-    - [ ] Research and select a background removal service (e.g., Remove.bg, Replicate AI).
-    - [ ] Create an API endpoint to handle image uploads, call the background removal service, and return the processed image.
-- [ ] **API Endpoints:**
-    - [ ] `POST /api/generate-poster`: Accepts user data (image, name, organization), processes it, and returns the final poster.
+- [x] **Setup Backend Server:** Initialize a Node.js project with Express.
+- [x] **Image Processing Service:**
+    - [x] Choose and integrate an image processing library (e.g., Sharp).
+    - [x] Implement logic to composite the user's photo onto the poster template.
+- [x] **Background Removal API:**
+    - [x] Research and select a background removal service (e.g., Remove.bg).
+    - [x] Create an API endpoint to handle image uploads, call the background removal service, and return the processed image.
+- [x] **API Endpoints:**
+    - [x] `POST /api/generate-poster`: Accepts user data (image, name, organization), processes it, and returns the final poster.
 
 ### Phase 3: Integration & Finalization
 
-- [ ] **Connect Frontend to Backend:**
-    - [ ] Implement logic in the frontend to call the `/api/generate-poster` endpoint.
-    - [ ] Display the generated poster preview to the user.
-- [ ] **Implement Download Functionality:**
-    - [ ] Add a "Download" button that allows the user to save the final poster as a PNG file.
-- [ ] **Styling and Responsiveness:**
-    - [ ] Apply final styling to match the UbuCon branding.
-    - [ ] Ensure the application is responsive and works on different screen sizes.
+- [x] **Connect Frontend to Backend:**
+    - [x] Implement logic in the frontend to call the `/api/generate-poster` endpoint.
+    - [x] Display the generated poster preview to the user.
+- [x] **Implement Download Functionality:**
+    - [x] Add a "Download" button that allows the user to save the final poster as a PNG file.
+- [x] **Styling and Responsiveness:**
+    - [x] Apply initial styling and responsiveness. Further refinement might be needed.
 
 ### Phase 4: Testing & Deployment
 
 - [ ] **Unit & Integration Testing:**
     - [ ] Write tests for critical components and services.
     - [ ] Perform end-to-end testing of the user flow.
-- [ ] **Deployment:**
-    - [ ] Choose a hosting provider for the frontend and backend (e.g., Vercel, Netlify, Heroku).
-    - [ ] Deploy the application.
-- [ ] **Documentation:**
-    - [ ] Update `README.md` with instructions on how to run the project locally.
+- [x] **Deployment:**
+    - [x] Choose a hosting provider for the frontend and backend (Vercel).
+    - [x] Deploy the application (initial deployment, with Vercel root directory configured).
+- [x] **Documentation:**
+    - [x] Update `README.md` with instructions on how to run the project locally.

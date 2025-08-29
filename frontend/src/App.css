@@ -22,6 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem; /* Add some space below the poster on mobile */
 }
 
 .poster-content {
@@ -30,6 +31,7 @@ body {
   padding-bottom: 70.7%; /* Aspect ratio of 1414x1000 (height/width * 100) */
   height: 0;
   overflow: hidden;
+  background-color: #f0f0f0; /* Fallback background */
 }
 
 .poster-template-img {
@@ -78,6 +80,16 @@ body {
 
 .button.download-button {
   margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .text-overlay {
+    font-size: 18px; /* Fixed font size for mobile */
+  }
+
+  .organization {
+    font-size: 14px; /* Fixed font size for mobile */
+  }
 }
 
 
