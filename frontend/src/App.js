@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image';
 import './App.css';
 import PosterCanvas from './components/PosterCanvas';
 import TextInput from './components/TextInput';
@@ -21,27 +21,32 @@ function App() {
 
     setIsLoading(true);
     const posterElement = posterRef.current;
-    posterElement.classList.add('print-view');
 
-    // Add a small delay to allow the browser to apply the new styles
-    setTimeout(() => {
-      html2canvas(posterElement, {
-        useCORS: true,
-      }).then(canvas => {
+    domtoimage.toPng(posterElement, {
+      width: 1080,
+      height: 1080,
+      style: {
+        // Temporarily override the on-screen styles for the capture
+        width: '1080px',
+        height: '1080px',
+        maxWidth: 'none',
+      }
+    })
+    .then(function (dataUrl) {
         const link = document.createElement('a');
-        link.href = canvas.toDataURL('image/png');
+        link.href = dataUrl;
         link.download = 'ubucon-poster.png';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-      }).catch(error => {
-        console.error('Error generating poster:', error);
+    })
+    .catch(function (error) {
+        console.error('oops, something went wrong!', error);
         alert('There was an error generating your poster. Please try again.');
-      }).finally(() => {
-        posterElement.classList.remove('print-view');
+    })
+    .finally(() => {
         setIsLoading(false);
-      });
-    }, 200); // 200ms delay
+    });
   };
 
   const imagePreview = image ? URL.createObjectURL(image) : null;
