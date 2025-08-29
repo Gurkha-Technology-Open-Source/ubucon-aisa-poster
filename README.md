@@ -13,14 +13,14 @@ This project is a web application that allows participants of UbuCon Asia 2025 t
 - **Frontend:** React
 - **Backend:** Node.js, Express
 - **Image Processing:** Sharp
-- **Background Removal:** Clipdrop API
+- **Background Removal:** remove.bg API
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js and npm installed.
-- A Clipdrop API key.
+- A remove.bg API key.
 
 ### Installation
 
@@ -45,9 +45,9 @@ This project is a web application that allows participants of UbuCon Asia 2025 t
 ### Configuration
 
 1. Create a `.env` file in the `backend` directory.
-2. Add your Clipdrop API key to the `.env` file:
+2. Add your remove.bg API key to the `.env` file:
    ```
-   CLIPDROP_API_KEY=YOUR_API_KEY_HERE
+   REMOVE_BG_API_KEY=YOUR_API_KEY_HERE
    ```
 
 ### Running the Application

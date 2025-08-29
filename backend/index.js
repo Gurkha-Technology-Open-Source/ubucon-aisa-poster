@@ -19,22 +19,23 @@ app.post('/api/generate-poster', upload.single('image'), async (req, res) => {
     const { name, organization } = req.body;
     const imageBuffer = req.file.buffer;
 
-    // Remove background using Clipdrop API
+    // Remove background using remove.bg API
     const formData = new FormData();
     formData.append('image_file', imageBuffer, 'image.jpg');
-    const clipdropResponse = await axios.post(
-      'https://api.clipdrop.co/remove-background/v1',
+    formData.append('size', 'auto');
+    const removeBgResponse = await axios.post(
+      'https://api.remove.bg/v1.0/removebg',
       formData,
       {
         headers: {
           ...formData.getHeaders(),
-          'x-api-key': process.env.CLIPDROP_API_KEY,
+          'X-Api-Key': process.env.REMOVE_BG_API_KEY,
         },
         responseType: 'arraybuffer',
       }
     );
 
-    const imageWithoutBg = clipdropResponse.data;
+    const imageWithoutBg = removeBgResponse.data;
 
     const poster = await sharp('../frontend/src/assets/poster-template.png')
       .composite([
