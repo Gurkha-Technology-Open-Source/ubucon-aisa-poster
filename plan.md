@@ -16,9 +16,9 @@ This project will be deployed on Vercel's free "Hobby" tier. The following const
 
 ### Phase 1: Project Setup & Frontend Foundation
 
-- [ ] **Initialize Project:** Set up a new React project using Create React App or Vite.
-- [ ] **Folder Structure:** Organize folders for components, services, and assets.
-- [ ] **UI Mockup:** Create the basic UI layout with placeholders for the poster, image upload, and text input fields.
+- [x] **Initialize Project:** Set up a new React project using Create React App or Vite.
+- [x] **Folder Structure:** Organize folders for components, services, and assets.
+- [x] **UI Mockup:** Create the basic UI layout with placeholders for the poster, image upload, and text input fields.
 - [ ] **Component Creation:**
     - [ ] `ImageUpload.js`: Component for handling file selection and preview.
     - [ ] `TextInput.js`: Component for name and organization input.
