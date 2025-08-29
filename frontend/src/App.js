@@ -24,7 +24,7 @@ function App() {
       formData.append('organization', organization);
       formData.append('image', image); // image state now holds the file object
 
-      const response = await fetch('http://localhost:5000/api/generate-poster', {
+      const response = await fetch('/api/generate-poster', {
         method: 'POST',
         body: formData,
       });
