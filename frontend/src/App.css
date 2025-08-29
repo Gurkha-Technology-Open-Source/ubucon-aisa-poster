@@ -109,6 +109,40 @@ body {
 }
 
 
+/* --- High-Resolution Print Styles --- */
+.print-view .text-overlay {
+  top: 108px;  /* 10% of 1080px */
+  left: 108px; /* 10% of 1080px */
+  font-size: 24px; /* Fixed size */
+}
+
+.print-view .profile-image {
+  top: 648px;   /* 60% of 1080px */
+  left: 77.76px; /* 7.2% of 1080px */
+  width: 540px;  /* 50% of 1080px */
+  height: 432px; /* 40% of 1080px */
+}
+
+.print-view .organization {
+  font-size: 18px; /* Fixed size */
+}
+
+/* --- Loading Overlay --- */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  z-index: 1000;
+}
+
 .controls-container {
   flex: 1;
   max-width: 40%;
