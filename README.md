@@ -13,7 +13,6 @@ This project is a web application that allows participants of UbuCon Asia 2025 t
 - **Frontend:** React
 - **Backend:** Node.js, Express
 - **Image Processing:** Sharp
-- **Background Removal:** remove.bg API
 
 ## Getting Started
 
