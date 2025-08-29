@@ -57,24 +57,26 @@ body {
 
 .profile-image {
   position: absolute;
-  top: 46%; /* Corresponds to 500px on 1080px canvas */
-  left: 11%; /* Corresponds to 120px on 1080px canvas */
-  width: 37%; /* Corresponds to 400px on 1080px canvas */
-  height: 37%;
+  top: 60%; /* Start at 60% from top */
+  left: 7.2%; /* Precisely positioned at 7.2% from left */
+  width: min(50%, 400px); /* Max 50% of canvas width */
+  height: 40%; /* Height to reach bottom of canvas */
   object-fit: cover;
+  z-index: 1; /* Ensure image stays below text */
 }
 
 .text-overlay {
   position: absolute;
-  top: 14%; /* Corresponds to 150px on 1080px canvas */
-  left: 11%; /* Corresponds to 120px on 1080px canvas */
+  top: 10%; /* Simple positioning at 10% from top */
+  left: 10%; /* Simple positioning at 10% from left */
   color: white;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 1.7vw;
+  font-size: clamp(12px, 1.2vw, 24px); /* Responsive font size with min/max */
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   white-space: nowrap;
   text-align: left;
+  z-index: 2; /* Ensure text stays above image */
 }
 
 .name {
@@ -91,11 +93,18 @@ body {
 
 @media (max-width: 768px) {
   .text-overlay {
-    font-size: 18px; /* Fixed font size for mobile */
+    font-size: 14px; /* Smaller for mobile */
   }
 
   .organization {
-    font-size: 14px; /* Fixed font size for mobile */
+    font-size: 10px; /* Smaller for mobile */
+  }
+
+  .profile-image {
+    left: 7.2%; /* Precisely positioned at 7.2% from left for mobile */
+    top: 60%; /* Increased gap for mobile as well */
+    width: min(50%, 250px); /* Max 50% of canvas width on mobile */
+    height: 40%; /* Height to reach bottom on mobile */
   }
 }
 
