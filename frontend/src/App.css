@@ -71,7 +71,7 @@ body {
   left: 10%; /* Simple positioning at 10% from left */
   color: white;
   font-family: 'Ubuntu', sans-serif;
-  font-size: clamp(12px, 1.2vw, 24px); /* Responsive font size with min/max */
+  font-size: clamp(16px, 1.5vw, 32px); /* Responsive font size with min/max */
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   white-space: nowrap;
@@ -84,7 +84,7 @@ body {
 }
 
 .organization {
-  font-size: 1.2vw; /* Responsive font size */
+  font-size: 1.5vw; /* Responsive font size */
 }
 
 .button.download-button {
@@ -93,11 +93,11 @@ body {
 
 @media (max-width: 768px) {
   .text-overlay {
-    font-size: 14px; /* Smaller for mobile */
+    font-size: 18px; /* Smaller for mobile */
   }
 
   .organization {
-    font-size: 10px; /* Smaller for mobile */
+    font-size: 12px; /* Smaller for mobile */
   }
 
   .profile-image {
@@ -108,12 +108,18 @@ body {
   }
 }
 
-
 /* --- High-Resolution Print Styles --- */
+.print-view.poster-container {
+  width: 1080px !important;
+  height: 1080px !important;
+  max-width: none !important;
+  position: relative;
+}
+
 .print-view .text-overlay {
   top: 108px;  /* 10% of 1080px */
   left: 108px; /* 10% of 1080px */
-  font-size: 24px; /* Fixed size */
+  font-size: 32px; /* Fixed size */
 }
 
 .print-view .profile-image {
@@ -124,7 +130,7 @@ body {
 }
 
 .print-view .organization {
-  font-size: 18px; /* Fixed size */
+  font-size: 24px; /* Fixed size */
 }
 
 /* --- Loading Overlay --- */
