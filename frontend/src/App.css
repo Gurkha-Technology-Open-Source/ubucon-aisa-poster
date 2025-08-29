@@ -17,8 +17,35 @@ body {
 }
 
 .poster-container {
+  position: relative;
   flex: 1;
   max-width: 50%;
+}
+
+.profile-image {
+  position: absolute;
+  bottom: 307px; /* As per PRD */
+  left: 94px; /* As per PRD */
+  width: 200px; /* Example width */
+  height: 200px; /* Example height */
+  object-fit: cover;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 540px;
+  left: 94px;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 24px; /* Example font size */
+}
+
+.name {
+  font-weight: 700;
+}
+
+.organization {
+  font-size: 18px; /* Example font size */
 }
 
 .poster-template {

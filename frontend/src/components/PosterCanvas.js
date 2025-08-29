@@ -1,0 +1,28 @@
+import React from 'react';
+import posterTemplate from '../assets/poster-template.png';
+
+const PosterCanvas = ({ name, organization, image, generatedPoster }) => {
+  return (
+    <div className="poster-container">
+      {generatedPoster ? (
+        <img src={generatedPoster} alt="Generated Poster" className="poster-template" />
+      ) : (
+        <>
+          <img src={posterTemplate} alt="UbuCon Asia 2025 Poster Template" className="poster-template" />
+          {image && <img src={image} alt="Profile" className="profile-image" />}
+          <div className="text-overlay">
+            <div className="name">{name}</div>
+            <div className="organization">{organization}</div>
+          </div>
+        </>
+      )}
+      {generatedPoster && (
+        <a href={generatedPoster} download="ubucon-poster.png" className="button">
+          Download Poster
+        </a>
+      )}
+    </div>
+  );
+};
+
+export default PosterCanvas;

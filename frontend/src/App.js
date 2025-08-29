@@ -1,31 +1,49 @@
+import React, { useState } from 'react';
+import axios from 'axios';
 import './App.css';
-import posterTemplate from './assets/poster-template.png';
+import PosterCanvas from './components/PosterCanvas';
+import TextInput from './components/TextInput';
+import ImageUpload from './components/ImageUpload';
 
 function App() {
+  const [name, setName] = useState('');
+  const [organization, setOrganization] = useState('');
+  const [image, setImage] = useState(null);
+  const [generatedPoster, setGeneratedPoster] = useState(null);
+
+  const handleGeneratePoster = async () => {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('organization', organization);
+    // The image state holds the URL. We need to fetch the blob.
+    const response = await fetch(image);
+    const blob = await response.blob();
+    formData.append('image', blob);
+
+    try {
+      const result = await axios.post('/api/generate-poster', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        responseType: 'blob',
+      });
+      setGeneratedPoster(URL.createObjectURL(result.data));
+    } catch (error) {
+      console.error('Error generating poster:', error);
+    }
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>UbuCon Asia 2025 Poster Generator</h1>
       </header>
       <main className="main-content">
-        <div className="poster-container">
-          <img src={posterTemplate} alt="UbuCon Asia 2025 Poster Template" className="poster-template" />
-        </div>
+        <PosterCanvas name={name} organization={organization} image={image} generatedPoster={generatedPoster} />
         <div className="controls-container">
-          <h2>Customize Your Poster</h2>
-          <div className="control-group">
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" />
-          </div>
-          <div className="control-group">
-            <label htmlFor="organization">Organization/Title:</label>
-            <input type="text" id="organization" />
-          </div>
-          <div className="control-group">
-            <label htmlFor="profile-pic">Profile Picture:</label>
-            <input type="file" id="profile-pic" accept="image/png, image/jpeg" />
-          </div>
-          <button className="button">Generate Poster</button>
+          <TextInput setName={setName} setOrganization={setOrganization} />
+          <ImageUpload setImage={setImage} />
+          <button className="button" onClick={handleGeneratePoster}>Generate Poster</button>
         </div>
       </main>
     </div>
