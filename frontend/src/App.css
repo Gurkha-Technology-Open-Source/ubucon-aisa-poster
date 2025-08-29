@@ -81,9 +81,6 @@ body {
   width: 37%; /* Corresponds to 400px on 1080px canvas */
   height: 37%;
   object-fit: cover;
-  width: 100%;
-  max-width: 100%;
-  overflow: auto;
 }
 
 .text-overlay {
