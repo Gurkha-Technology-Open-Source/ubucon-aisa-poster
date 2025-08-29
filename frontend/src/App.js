@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import html2canvas from 'html2canvas';
 import './App.css';
 import PosterCanvas from './components/PosterCanvas';
 import TextInput from './components/TextInput';
@@ -13,32 +13,24 @@ function App() {
 
   // Handles the poster generation and download process
   const handleDownloadPoster = async () => {
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('organization', organization);
-
-    if (image) {
-      const response = await fetch(image);
-      const blob = await response.blob();
-      formData.append('image', blob);
-    }
+    const posterElement = document.querySelector('.poster-content');
 
     try {
-      const result = await axios.post('/api/generate-poster', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        responseType: 'blob',
+      const canvas = await html2canvas(posterElement, {
+        width: 1080,
+        height: 1080,
+        scale: 2, // Higher quality
+        useCORS: true,
       });
 
-      // Create a temporary link to trigger the download
-      const url = window.URL.createObjectURL(new Blob([result.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'ubucon-poster.png');
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode.removeChild(link);
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'ubucon-poster.png';
+        link.click();
+        URL.revokeObjectURL(url);
+      });
     } catch (error) {
       console.error('Error generating poster:', error);
     }

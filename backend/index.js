@@ -23,7 +23,7 @@ app.post('/api/generate-poster', upload.single('image'), async (req, res) => {
 
     // --- Image Composition using Sharp ---
     // Load the base poster template and composite the elements onto it
-    const poster = await sharp('./frontend/src/assets/poster-template.png')
+    const poster = await sharp('../frontend/src/assets/poster-template.png')
       .resize(1080, 1080) // Resize the canvas to 1080x1080
       .composite([
         // Composite the user's image onto the poster
