@@ -6,30 +6,37 @@ import TextInput from './components/TextInput';
 import ImageUpload from './components/ImageUpload';
 
 function App() {
+  // State variables to hold user input and the generated poster
   const [name, setName] = useState('');
   const [organization, setOrganization] = useState('');
-  const [image, setImage] = useState(null);
-  const [generatedPoster, setGeneratedPoster] = useState(null);
+  const [image, setImage] = useState(null); // Stores the URL of the uploaded image for preview
+  const [generatedPoster, setGeneratedPoster] = useState(null); // Stores the URL of the generated poster from the backend
 
+  // Handles the poster generation process by sending data to the backend
   const handleGeneratePoster = async () => {
     const formData = new FormData();
     formData.append('name', name);
     formData.append('organization', organization);
-    // The image state holds the URL. We need to fetch the blob.
+
+    // The `image` state holds a URL (created by URL.createObjectURL). 
+    // To send it to the backend, we need to fetch the actual image data as a Blob.
     const response = await fetch(image);
     const blob = await response.blob();
     formData.append('image', blob);
 
     try {
+      // Send a POST request to the backend API to generate the poster
       const result = await axios.post('/api/generate-poster', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'multipart/form-data', // Important for sending file data
         },
-        responseType: 'blob',
+        responseType: 'blob', // Expecting a binary response (the image file) from the backend
       });
+      // Create a URL for the received image blob and set it for display
       setGeneratedPoster(URL.createObjectURL(result.data));
     } catch (error) {
       console.error('Error generating poster:', error);
+      // TODO: Implement more user-friendly error feedback
     }
   };
 
